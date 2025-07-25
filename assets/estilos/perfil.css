@@ -1,0 +1,232 @@
+.profile-card {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(222, 150, 141, 0.15);
+    background: #fff;
+}
+
+.profile-card .card-header {
+    background: linear-gradient(135deg, #DE968D, #FDB7B1);
+    color: white;
+    border: none;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: white;
+    transition: all 0.3s ease;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.profile-avatar:hover {
+    transform: scale(1.05);
+    border-color: white;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.card-body {
+    padding: 2rem;
+    background: linear-gradient(to right, #f8f9fa 0%, #ffffff 100%);
+}
+
+.section-title {
+    color: #DE968D;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title i {
+    font-size: 1.2rem;
+    color: #DE968D;
+    opacity: 0.9;
+}
+
+.section-header {
+    position: relative;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.section-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(to right, #DE968D 0%, #d17b71 100%);
+    border-radius: 3px;
+}
+
+.section-header small {
+    display: block;
+    margin-top: 0.5rem;
+    color: #718096;
+    font-size: 0.875rem;
+}
+
+.form-section {
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.section-header {
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-label i {
+    color: #DE968D;
+    font-size: 1rem;
+}
+
+.custom-input {
+    border-radius: 12px;
+    border: 2px solid #eee;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    height: 48px;
+}
+
+.custom-input:focus {
+    border-color: #DE968D;
+    box-shadow: 0 0 0 0.25rem rgba(222, 150, 141, 0.15);
+    outline: none;
+}
+
+.custom-input:hover {
+    border-color: #FDB7B1;
+}
+
+.custom-input::placeholder {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    opacity: .65;
+    transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
+    color: #DE968D;
+}
+
+.form-control {
+    border-radius: 8px;
+    border: 1px solid rgba(222, 150, 141, 0.2);
+    transition: all 0.3s ease;
+    background-color: #fff;
+    font-size: 1rem;
+}
+
+.form-control:focus {
+    border-color: #DE968D;
+    box-shadow: 0 0 0 0.2rem rgba(222, 150, 141, 0.1);
+    background-color: #fff;
+}
+
+.form-control.is-invalid {
+    border-color: #d17b71;
+    background-image: none;
+}
+
+.form-control.is-invalid:focus {
+    border-color: #d17b71;
+    box-shadow: 0 0 0 0.2rem rgba(209, 123, 113, 0.25);
+}
+
+.form-control::placeholder {
+    color: transparent;
+}
+
+.invalid-feedback {
+    display: none;
+    align-items: center;
+    font-size: 0.875rem;
+    color: #d17b71;
+    margin-top: 0.25rem;
+}
+
+.btn-primary {
+    padding: 0.75rem 2rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: #DE968D;
+    border: 2px solid transparent;
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    background: white;
+    color: #DE968D;
+    border-color: #DE968D;
+}
+
+.alert {
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border: none;
+    background: rgba(222, 150, 141, 0.1);
+    color: #DE968D;
+    border-left: 4px solid #DE968D;
+}
+
+.text-muted {
+    font-size: 0.875rem;
+    color: #718096 !important;
+}
+
+.invalid-feedback {
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    color: #d17b71;
+}
+
+@media (max-width: 768px) {
+    .profile-avatar {
+        width: 60px;
+        height: 60px;
+    }
+
+    .profile-avatar i {
+        font-size: 2.2rem;
+    }
+
+    .card-header {
+        padding: 1rem;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.25rem;
+    }
+}

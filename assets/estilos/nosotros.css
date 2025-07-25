@@ -1,0 +1,135 @@
+/* Estilos generales */
+.contenido-nosotros {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Sección Hero */
+.hero-nosotros {
+    text-align: center;
+    padding: 4rem 0;
+
+    margin-bottom: 3rem;
+}
+
+.hero-nosotros h1 {
+    font-size: 2.5rem;
+    color: #2d3748;
+    margin-bottom: 1rem;
+}
+
+.hero-nosotros p {
+    font-size: 1.2rem;
+    color: #718096;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Sección Historia */
+.historia {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin: 4rem 0;
+}
+
+.texto-historia h2 {
+    font-size: 2rem;
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+}
+
+.texto-historia p {
+    line-height: 1.8;
+    color: #718096;
+    margin-bottom: 1.5rem;
+}
+
+.imagen-historia {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Sección Valores */
+.valores {
+    margin: 5rem 0;
+}
+
+.valores h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #2d3748;
+    margin-bottom: 3rem;
+}
+
+.grid-valores {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.valor-item {
+    text-align: center;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(222, 150, 141, 0.1);
+}
+
+.valor-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(222, 150, 141, 0.15);
+}
+
+.valor-item i {
+    font-size: 2.5rem;
+    color: #DE968D;
+    margin-bottom: 1rem;
+}
+
+.valor-item h3 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.valor-item p {
+    color: #718096;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .historia {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .grid-valores {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-nosotros h1 {
+        font-size: 2rem;
+    }
+
+    .imagen-historia {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contenido-nosotros {
+        padding: 1rem;
+    }
+
+    .valor-item {
+        padding: 1.5rem;
+    }
+}
