@@ -340,7 +340,7 @@ class ControladorAdmin{
                     echo json_encode(['success' => true]);
                 } elseif ($action === 'actualizar') {
                     $id = $_POST['spaId'];
-                    $nombre = $_POST['nombre'];
+                    $nombre = $_POST['nombre']; 
                     $direccion = $_POST['direccion'];
                     $telefono = $_POST['telefono'];
                     $email = $_POST['email'];
@@ -673,7 +673,7 @@ class ControladorAdmin{
                     Spas::eliminar($id);
                 } else {
                     // Si no existe, crear una consulta directa
-                    $db = DB::ObtenerInstancia();
+                    $db = DB::crearInstancia();
                     $query = "DELETE FROM spas WHERE id_spa = ?";
                     $stmt = $db->prepare($query);
                     $stmt->execute([$id]);

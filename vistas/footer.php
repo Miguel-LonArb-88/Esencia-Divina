@@ -31,7 +31,8 @@
     </div>
     <div class="footer-bottom">
     <!-- &copy es el caracter de copyright  -->
-        <p>&copy; <?php echo date('Y'); ?> Esencia divina. Todos los derechos reservados.</p>
+        <p>&copy; <?php echo date('Y'); ?> Esencia divina. Todos los derechos reservados. | 
+        <a href="?controlador=paginas&accion=terminos" style="color: #DE968D; text-decoration: none;">Términos y Condiciones</a></p>
     </div>
 </footer>
 

@@ -37,7 +37,7 @@ class Pagos {
     }
 
     // Registrar un nuevo pago
-    public function registrarPago($datos) {
+    public static function registrarPago($datos) {
         try {
             self::validarDatosPago($datos);
             $conexion = DB::crearInstancia();

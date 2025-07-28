@@ -35,6 +35,11 @@
             include_once("vistas/paginas/nosotros.php");
         }
 
+        // Método que muestra la página de términos y condiciones
+        public function terminos(){
+            include_once("vistas/paginas/terminos.php");
+        }
+
         public function enviarContacto(){
             // Validar que sea una petición POST
             if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
