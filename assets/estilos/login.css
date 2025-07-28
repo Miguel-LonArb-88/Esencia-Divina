@@ -1,11 +1,25 @@
 .login-container {
-    background: linear-gradient(135deg, #ffb4a2 0%, #d4c3c4 100%);
+    background: url('../img/carousel1.jpg') center/cover no-repeat;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
+    position: relative;
 }
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+
 
 .login-box {
     background: rgba(255, 255, 255, 0.95);
@@ -16,6 +30,8 @@
     max-width: 400px;
     transform: translateY(0);
     transition: transform 0.3s ease;
+    position: relative;
+    z-index: 2;
 }
 
 .login-box:hover {
@@ -116,9 +132,72 @@
     font-size: 14px;
 }
 
+/* Estilos para checkbox de términos y condiciones */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #6d6875;
+    line-height: 1.4;
+}
+
+.checkbox-container input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    height: 18px;
+    width: 18px;
+    background-color: #fff;
+    border: 2px solid #ffcdb2;
+    border-radius: 4px;
+    margin-right: 10px;
+    position: relative;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.checkbox-container:hover .checkmark {
+    border-color: #e5989b;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #e5989b;
+    border-color: #e5989b;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    content: "";
+    position: absolute;
+    display: block;
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-container a {
+    color: #e5989b;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.checkbox-container a:hover {
+    color: #b5838d;
+    text-decoration: underline;
+}
+
 @media (max-width: 480px) {
     .login-box {
         padding: 25px;
         margin: 15px;
+    }
+    
+    .checkbox-container {
+        font-size: 13px;
     }
 }

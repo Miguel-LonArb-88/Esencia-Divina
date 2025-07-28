@@ -23,6 +23,13 @@
           </span>
         </div>
       </div>
+      <div class="input-group">
+        <label class="checkbox-container">
+          <input type="checkbox" id="terms" name="terms" required>
+          <span class="checkmark"></span>
+          Acepto los <a href="?controlador=paginas&accion=terminos" target="_blank">Términos y Condiciones</a>
+        </label>
+      </div>
       <button type="submit" class="login-button">Registrarse</button>
       <p class="forgot-password">¿Ya tienes cuenta? <a href="?controlador=usuarios&accion=login">Inicia sesión</a></p>
     </form>
@@ -49,4 +56,28 @@ function togglePassword(inputId) {
         `;
     }
 }
+
+// Validación del formulario
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('registerForm');
+    const termsCheckbox = document.getElementById('terms');
+    const errorMessage = document.getElementById('error-message');
+    
+    form.addEventListener('submit', function(e) {
+        if (!termsCheckbox.checked) {
+            e.preventDefault();
+            errorMessage.textContent = 'Debes aceptar los términos y condiciones para registrarte.';
+            errorMessage.style.display = 'block';
+            return false;
+        }
+        errorMessage.style.display = 'none';
+    });
+    
+    // Limpiar mensaje de error cuando se marca el checkbox
+    termsCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            errorMessage.style.display = 'none';
+        }
+    });
+});
 </script>
