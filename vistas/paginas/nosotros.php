@@ -17,9 +17,9 @@
         <div class="historia">
             <div class="texto-historia">
                 <h2>Nuestra Historia</h2>
-                <p>Fundado en 2013 por profesionales de la salud, La Paso nació del deseo de crear un espacio donde el bienestar físico y mental se fusionan armoniosamente.</p>
+                <p>Fundado en 2025 por un grupo de estudiantes, Esencia Divina nació del deseo de crear un espacio donde el bienestar físico y mental se fusionan armoniosamente.</p>
             </div>
-            <img src="assets/img/masajes/equipo.jpg" alt="Nuestro equipo" class="imagen-historia">
+            <img src="assets/img/grupo.jpg" alt="Nuestro equipo" class="imagen-historia">
         </div>
 
         <div class="valores">

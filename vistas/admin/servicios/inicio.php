@@ -96,7 +96,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">
+                <h5 class="modal-title" id="modalServicioTitle">
                     <i class="fas fa-spa"></i>
                     Agregar Nuevo Servicio
                 </h5>
@@ -153,6 +153,24 @@
                                     <option value="facial">✨ Tratamientos Faciales</option>
                                     <option value="corporal">💆 Tratamientos Corporales</option>
                                     <option value="relajacion">🧘 Relajación</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    <i class="fas fa-building me-2"></i>Spa
+                                </label>
+                                <select class="form-select" id="spaServicio" name="id_spa" required>
+                                    <?php if (isset($spas) && !empty($spas)): ?>
+                                        <?php foreach($spas as $spa): ?>
+                                            <option value="<?php echo $spa->id_spa; ?>"><?php echo htmlspecialchars($spa->nombre); ?></option>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <option value="1">Spa Principal</option>
+                                    <?php endif; ?>
                                 </select>
                             </div>
                         </div>
@@ -246,12 +264,56 @@
 
 <script src="assets/js/admin-funciones.js"></script>
 <script>
+// Función para validar el formulario de servicio
+function validarFormularioServicio() {
+    const nombre = document.getElementById('nombreServicio').value.trim();
+    const descripcion = document.getElementById('descripcionServicio').value.trim();
+    const precio = parseFloat(document.getElementById('precioServicio').value);
+    const duracion = parseInt(document.getElementById('duracionServicio').value);
+    
+    // Validar nombre
+    if (nombre.length < 3) {
+        mostrarNotificacion('El nombre del servicio debe tener al menos 3 caracteres', 'error');
+        return false;
+    }
+    
+    // Validar descripción
+    if (descripcion.length < 10) {
+        mostrarNotificacion('La descripción debe tener al menos 10 caracteres', 'error');
+        return false;
+    }
+    
+    // Validar precio
+    if (isNaN(precio) || precio <= 0) {
+        mostrarNotificacion('El precio debe ser un número mayor a 0', 'error');
+        return false;
+    }
+    
+    if (precio > 1000) {
+        mostrarNotificacion('El precio no puede ser mayor a €1000', 'error');
+        return false;
+    }
+    
+    // Validar duración
+    if (isNaN(duracion) || duracion < 15 || duracion > 300) {
+        mostrarNotificacion('La duración debe estar entre 15 y 300 minutos', 'error');
+        return false;
+    }
+    
+    return true;
+}
+
 // Event listener para el formulario de servicio
 document.addEventListener('DOMContentLoaded', function() {
     const formServicio = document.getElementById('formServicio');
     if (formServicio) {
         formServicio.addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Validar formulario antes de enviar
+            if (!validarFormularioServicio()) {
+                return;
+            }
             
             const formData = new FormData(this);
             const servicioId = document.getElementById('servicioId').value;
@@ -263,24 +325,46 @@ document.addEventListener('DOMContentLoaded', function() {
                 formData.append('accion', 'crear');
             }
             
+            // Mostrar indicador de carga
+            const submitBtn = document.querySelector('#formServicio button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Guardando...';
+            submitBtn.disabled = true;
+            
             fetch('?controlador=admin&accion=servicios', {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta del servidor');
+                }
+                return response.json();
+            })
             .then(data => {
                 if (data.success) {
-                    mostrarNotificacion(data.message || 'Operación exitosa', 'success');
+                    mostrarNotificacion('Servicio guardado correctamente', 'success');
+                    // Cerrar modal
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('modalServicio'));
+                    if (modal) {
+                        modal.hide();
+                    }
+                    // Recargar página después de un breve delay
                     setTimeout(() => {
                         location.reload();
                     }, 1500);
                 } else {
-                    mostrarNotificacion(data.message || 'Error en la operación', 'error');
+                    mostrarNotificacion(data.message || 'Error al guardar el servicio', 'error');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                mostrarNotificacion('Error en la operación', 'error');
+                mostrarNotificacion('Error de conexión. Por favor, inténtalo de nuevo.', 'error');
+            })
+            .finally(() => {
+                // Restaurar botón
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
             });
         });
     }

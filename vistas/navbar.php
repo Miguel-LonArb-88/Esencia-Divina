@@ -2,15 +2,15 @@
     <div class="container-fluid px-4">
         <!-- Informacion de contacto -->
         <div class="navbar-text d-none d-lg-flex align-items-center">
-            <span class="me-3"><i class="far fa-envelope"></i> info@spaproject.com</span>
-            <span><i class="fas fa-phone"></i> +34 912 345 678</span>
+            <span class="me-3"><i class="far fa-envelope"></i> essenciadivina819@spaproject.com</span>
+            <span><i class="fas fa-phone"></i> +57 312 843 2022</span>
         </div>
 
         <!-- Redes sociales -->
         <div class="d-none d-lg-flex align-items-center ms-auto" style="gap: 10px;">
-            <a href="#" class="nav-link px-2"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="nav-link px-2"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="nav-link px-2"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/share/1CM7yE9XX7/" class="nav-link px-2"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/essenciadivina819/" class="nav-link px-2"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/essenciadivina8?t=MJuHdtMdraC59KE6BUCqYQ&s=08" class="nav-link px-2"><i class="fab fa-twitter"></i></a>
             <a href="#" class="btn btn-primary">Reservar Ahora</a>
         </div>
     </div>
@@ -31,7 +31,7 @@
 
         <!-- Items del menu -->
         <div class="collapse navbar-collapse" id="navbarMain" style="gap: 2rem;">
-            <ul class="navbar-nav mx-auto gap-4"> 
+            <ul class="navbar-nav mx-auto gap-4">
                 <li class="nav-item">
                     <a class="nav-link px-3" href="?controlador=paginas&accion=inicio">Inicio</a>
                 </li>
@@ -53,12 +53,12 @@
                     <i class="fas fa-shopping-cart"></i>
 
                     <!-- Contador de productos en el carrito -->
-                    <?php if(isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0): ?>
+                    <?php if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0): ?>
                         <span class="badge bg-danger"><?php echo count($_SESSION['carrito']); ?></span>
                     <?php endif; ?>
                 </a>
-                <?php 
-                if(isset($_SESSION['nombre'])) {
+                <?php
+                if (isset($_SESSION['nombre'])) {
                     echo '<div class="dropdown">';
                     echo '<a class="nav-link dropdown-toggle" href="#" id="userDropdown" data-bs-toggle="dropdown">';
                     echo '<i class="fas fa-user"></i>';
@@ -72,14 +72,21 @@
                     echo '</div>';
                     echo '</div>';
                 } else {
-                    echo '<div class="dropdown">';
-                    echo '<a class="nav-link dropdown-toggle" href="#" id="userDropdown" data-bs-toggle="dropdown">';
-                    echo '<i class="fas fa-user"></i>';
+                    echo '<div class="d-flex align-items-center ms-3" style="gap: 12px;">';
+                    echo '<a href="?controlador=usuarios&accion=login" class="btn btn-outline-primary btn-sm px-3 py-2" 
+                            style="border-color: #E5989B; color: #E5989B; transition: all 0.3s ease;"
+                            data-bs-toggle="tooltip" 
+                            data-bs-placement="bottom" 
+                            title="Iniciar sesión">';
+                    echo '<i class="fas fa-sign-in-alt"></i>';
                     echo '</a>';
-                    echo '<div class="dropdown-menu dropdown-menu-end">';
-                    echo '<a class="dropdown-item" href="?controlador=usuarios&accion=login">Ingresar</a>';
-                    echo '<a class="dropdown-item" href="?controlador=usuarios&accion=registro">Registro</a>';
-                    echo '</div>';
+                    echo '<a href="?controlador=usuarios&accion=registro" class="btn btn-primary btn-sm px-3 py-2" 
+                            style="transition: all 0.3s ease;"
+                            data-bs-toggle="tooltip" 
+                            data-bs-placement="bottom" 
+                            title="Registrarse">';
+                    echo '<i class="fas fa-user-plus"></i>';
+                    echo '</a>';
                     echo '</div>';
                 }
                 ?>

@@ -18,7 +18,8 @@
                 exit();
             }
 
-            if (!isset($_POST['submit'])) {
+            // Verificar si es un envío POST (cuando se envía el formulario)
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                 include_once("vistas/usuarios/login.php");
                 return;
             }
